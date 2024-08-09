@@ -1,16 +1,17 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.8.0"
-    id("net.minecrell.plugin-yml.bukkit") version "0.5.3" // Documentation: https://github.com/Minecrell/plugin-yml
-    id("com.github.johnrengelman.shadow") version "8.1.0" // Documentation: https://github.com/johnrengelman/shadow
+    kotlin("jvm") version "2.0.10"
+    id("net.minecrell.plugin-yml.bukkit") version "0.6.0" // https://github.com/Minecrell/plugin-yml
+    id("com.gradleup.shadow") version "8.3.0" // https://github.com/GradleUp/shadow
 }
 
-val spigotVersion : String by project
-val pluginGroup : String by project
-val pluginVersion : String by project
+val spigotVersion: String by project
+val pluginGroup: String by project
+val pluginVersion: String by project
 
 group = project.property("pluginGroup") as String
 version = project.property("pluginVersion") as String
@@ -41,17 +42,22 @@ bukkit {
     main = pluginMain
     author = pluginAuthor
     description = pluginDescription
-    // commands {
-    //     register("examplecommand")
-    // }
+    commands {
+        register("examplecommand")
+    }
+    permissions {
+        register("exampleproject.examplecommand")
+    }
 }
 
 tasks {
     withType<JavaCompile> {
         options.encoding = "UTF-8"
+        sourceCompatibility = "21"
+        targetCompatibility = "21"
     }
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+        compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
     }
     withType<ShadowJar> {
         archiveBaseName.set(pluginName)

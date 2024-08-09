@@ -1,6 +1,0 @@
-{
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "files.autoSaveDelay": 1000,
-    "editor.formatOnType":true
-}
