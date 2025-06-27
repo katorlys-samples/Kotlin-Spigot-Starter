@@ -4,9 +4,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "2.0.10"
-    id("net.minecrell.plugin-yml.bukkit") version "0.6.0" // https://github.com/Minecrell/plugin-yml
-    id("com.gradleup.shadow") version "8.3.0" // https://github.com/GradleUp/shadow
+    kotlin("jvm") version "2.1.20"
+    id("de.eldoria.plugin-yml.bukkit") version "0.7.1" // https://github.com/eldoriarpg/plugin-yml
+    id("com.gradleup.shadow") version "8.3.4" // https://github.com/GradleUp/shadow
 }
 
 val spigotVersion: String by project
